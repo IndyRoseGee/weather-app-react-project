@@ -1,0 +1,21 @@
+#forecast {
+  text-align: center;
+}
+.col {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.card-body {
+  padding: 10px;
+}
+.card {
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.514);
+}
+.small-t-emoji {
+  font-size: 50px;
+}
+.small-temps {
+  text-align: center;
+  font-size: 20px;
+}

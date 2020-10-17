@@ -1,0 +1,22 @@
+.app {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-content {
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.678);
+  margin: 0 auto;
+  margin-top: 45px;
+  margin-bottom: 30px;
+  width: 780px;
+  border-radius: 10px;
+}
+.vids {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
