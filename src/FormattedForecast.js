@@ -24,30 +24,24 @@ export default function FormattedForecast(props) {
     nextDay[i - 1] = days[nextDayIndex];
     return nextDay;
   }
+  let date = new Date(props.data.dt * 1000);
 
   return (
-<div className="col">
-    <div className="card">
-        <div className="card-body">
-            <p className="day" id="day-one">
-                {nextDays(props.index)}
-            </p>
-            <span id="day-one-box">
-                <p className="small-t-emoji">
-                    <WeatherIcon code={props.data[props.index].weather[0].id}/>
-                </p>
-                <p>
-                    <span className="daytemp" id="highFiveDayTemp">
-                        {Math.round(props.data[props.index].temp.max)}
-                    </span>º
-                    <span className="nighttemp" id="lowFiveDayTemp">
-                        | {Math.round(props.data[props.index].temp.min)}
-                    </span>º
-                </p>
-            </span>
-        </div>
+    <div className="col boxes">
+      <p>
+  {nextDays(props.index)} {props.date}</p>
+      <p>
+      <WeatherIcon
+        code={props.data[props.index].weather[0].icon}
+        
+      />
+      </p>
+      <p>
+        {Math.round(props.data[props.index].temp.max)}º |{" "}
+        {Math.round(props.data[props.index].temp.min)} º
+      </p>
+
     </div>
-</div>
   );
 }
 

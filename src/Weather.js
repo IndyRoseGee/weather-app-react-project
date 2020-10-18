@@ -95,7 +95,7 @@ export default function Weather(props) {
     <br />
       <TodayTemp data={weatherData} />
        <hr />
-    <Forecast city={weatherData.city}/>
+      <Forecast longitude={weatherData.long} latitude={weatherData.lat}/>
     </div>
   );
   } else {
