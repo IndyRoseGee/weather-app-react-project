@@ -67,3 +67,8 @@ p {
   background-color: rgb(1, 88, 158);
   border-color: white;
 }
+
+.loading {
+  padding-top: 15px;
+  text-align: center;
+}

@@ -1,8 +1,7 @@
 import React from "react";
 import "./contents.css";
 
-import CitySearch from "./CitySearch";
-import TodayTemp from "./TodayTemp";
+import Weather from "./Weather";
 import Forecast from "./Forecast";
 import Footer from "./Footer";
 import background from "./media/01d.mp4";
@@ -18,16 +17,14 @@ export default function App() {
             </video>
           </div>
         </div>
-        <div className="container">
-          <span className="main-content">
-            <CitySearch />
-            <br />
-            <TodayTemp />
+        <div className="container" >
+          <div className="main-content">
+            <Weather defaultCity="London"/>
             <hr />
             <Forecast />
             <br />
             <Footer />
-          </span>
+          </div>
         </div>
       </div>
     </div>
