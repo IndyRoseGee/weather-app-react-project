@@ -3,6 +3,7 @@ import TodayTemp from "./TodayTemp";
 import "./weather.css";
 import axios from "axios";
 import Loader from 'react-loader-spinner';
+import Forecast from "./Forecast";
 
 
 
@@ -22,6 +23,9 @@ export default function Weather(props) {
             city: response.data.name,
             hightemp: response.data.main.temp_max,
             lowtemp: response.data.main.temp_min,
+            lat: response.data.coord.lat,
+            long: response.data.coord.lon,
+
         })
     }
 
@@ -39,6 +43,20 @@ export default function Weather(props) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
   }
+
+
+  function searchCurrentCoordinates(position) {
+    const apiKey = "5e479c0f3c564141872dc35a4d10e84c";
+    let updatedApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+    axios.get(updatedApiUrl).then(handleResponse);
+  }
+
+
+  function searchCurrentLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchCurrentCoordinates);
+  }
+
 
   if (weatherData.ready) {
   return (
@@ -66,6 +84,7 @@ export default function Weather(props) {
               id="current-location"
               className="btn btn-outline-success my-2 my-sm-0"
               type="submit"
+              onClick={searchCurrentLocation}
             >
               Current Location
             </button>
@@ -75,6 +94,8 @@ export default function Weather(props) {
     </div>
     <br />
       <TodayTemp data={weatherData} />
+       <hr />
+    <Forecast city={weatherData.city}/>
     </div>
   );
   } else {

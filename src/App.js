@@ -20,8 +20,6 @@ export default function App() {
         <div className="container" >
           <div className="main-content">
             <Weather defaultCity="London"/>
-            <hr />
-            <Forecast />
             <br />
             <Footer />
           </div>

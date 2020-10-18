@@ -1,7 +1,8 @@
 import React from "react";
 import "./todaytemp.css";
-import bigEmoji from "./media/01d.png";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcons"
+import DegreesTemperature from "./DegreesTemperature";
 
 export default function TodayTemp(props) {
 
@@ -14,21 +15,12 @@ export default function TodayTemp(props) {
                 <div className="row">
                     <div className="col-2"></div>
                     <div className="col-3">
-                        <span className="maintemp" id="main-temperature">
-                            {Math.round(props.data.temperature)}
-                        </span>
                         <span className="maindegrees">
-                            <a href="#/" className="active" id="celsius-link">
-                                ºC
-              </a>{" "}
-              |
-              <a href="#/" id="fahrenheit-link">
-                                ºF{" "}
-                            </a>
+                        <DegreesTemperature celsius={props.data.temperature} />
                         </span>
                     </div>
                     <div className="col-2" id="icon">
-                        <img src={bigEmoji} alt="Sun" />
+                        <WeatherIcon code={props.data.icon} />
                     </div>
                     <div className="col-4" id="two-temps">
                         <p>

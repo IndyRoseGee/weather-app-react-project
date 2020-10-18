@@ -5,12 +5,13 @@
   align-items: center;
   justify-content: center;
 }
-.main-content {
+.container {
   z-index: 1;
   background: rgba(255, 255, 255, 0.678);
   margin: 0 auto;
   margin-top: 45px;
   margin-bottom: 30px;
+
   width: 780px;
   border-radius: 10px;
 }
