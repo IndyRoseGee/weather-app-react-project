@@ -4,7 +4,6 @@ import WeatherIcon from "./WeatherIcons";
 
 
 export default function FormattedForecast(props) {
-  //code to transform next days into text
   let days = [
     "Sunday",
     "Monday",

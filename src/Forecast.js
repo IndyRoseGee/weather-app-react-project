@@ -11,7 +11,6 @@ export default function Forecast(props) {
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState(null);
 
-  //Code to get forecast
   function getForecast(result) {
     setForecast(result.data);
     setLoaded(true);
