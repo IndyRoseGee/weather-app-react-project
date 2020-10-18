@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import "./todaytemp.css";
 import bigEmoji from "./media/01d.png";
-import Date from "./Date";
 import Axios from "axios";
+import FormattedDate from "./FormattedDate";
 
 export default function TodayTemp() {
-    const [ready, setReady] = useState(false);
-    const[weatherData, setWeatherData] = useState({});
+    const[weatherData, setWeatherData] = useState({ready: false});
     function handleResponse(response) {
-        setTemperature(response.data.main.temp);
         setWeatherData({
             ready: true,
             temperature: response.data.main.temp,
@@ -18,21 +16,23 @@ export default function TodayTemp() {
             description: response.data.weather[0].description,
             icon: response.data.weather[0].icon,
             city: response.data.name,
+            hightemp: response.data.main.temp_max,
+            lowtemp: response.data.main.temp_min,
         })
     }
 
-    if (ready) {
+    if (weatherData.ready) {
     return (
         <div className="today-temp">
             <p className="today" id="todays-date">
-                <Date/>
+               <FormattedDate date={weatherData.date}/>
              </p>
             <div className="mainTemp">
                 <div className="row">
                     <div className="col-2"></div>
                     <div className="col-3">
                         <span className="maintemp" id="main-temperature">
-                            {Math.round(temperature)}{" "}
+                            {Math.round(weatherData.temperature)}{" "}
                         </span>
                         <span className="maindegrees">
                             <a href="#/" className="active" id="celsius-link">
@@ -49,10 +49,10 @@ export default function TodayTemp() {
                     </div>
                     <div className="col-4" id="two-temps">
                         <p>
-                            High: <span id="high-temp">-</span>{" "}
+                            High: {Math.round(weatherData.hightemp)}
                             <span id="celsius-symbol">ºC</span>
                             <br />
-              Low: <span id="low-temp">-</span>{" "}
+              Low: {Math.round(weatherData.lowtemp)}
                             <span id="celsius-symbol-low">ºC</span>
                         </p>
                     </div>
@@ -64,13 +64,10 @@ export default function TodayTemp() {
                     {weatherData.description}
                 </p>
             </div>
-
-            <div className="descriptives">
-               <p> {weatherData.humidity}%
-        </p>
-             <p>   {weatherData.wind} m/s
-        </p>
-            </div>
+          <div class="descriptives">
+            <p class="descriptive">Humidity = {weatherData.humidity}%</p>
+            <p class="descriptive">Wind Speed = {weatherData.wind} m/s</p>
+          </div>
         </div>
     );
 
